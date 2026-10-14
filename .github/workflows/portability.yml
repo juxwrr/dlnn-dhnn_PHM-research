@@ -1,0 +1,31 @@
+name: Windows and Linux verification
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    env:
+      PYTHONUTF8: '1'
+      JAX_PLATFORMS: cpu
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: x64
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Device and import verification
+        run: python -m conservative_training.portable check --device cpu
+      - name: Equation recipe and continuation checks
+        run: python -m unittest conservative_training.test_training conservative_training.test_comparisons conservative_training.test_original_dissipation conservative_training.test_portable
+      - name: Physics reference audit
+        run: python -m conservative_training.audit --out verification_runs/audit

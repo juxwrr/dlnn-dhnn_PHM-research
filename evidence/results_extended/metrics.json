@@ -1,0 +1,23 @@
+{
+  "attitude": {
+    "train_acceleration_mse": 9.756933627786227e-08,
+    "test_acceleration_mse": 1.0281348946314489e-07,
+    "trajectory_state_rmse_scaled": 0.0002995569089555996,
+    "true_energy_relative_defect_on_learned_path": 0.0011252126594142701,
+    "learned_energy_relative_drift": 1.5872603917144427e-08,
+    "reference_energy_relative_drift": 1.5880605289481346e-08,
+    "attitude_rmse_degrees": 0.014775040767922841
+  },
+  "centrifuge": {
+    "train_acceleration_mse": 4.659741120509529e-08,
+    "test_acceleration_mse": 1.682269173022373e-06,
+    "trajectory_state_rmse_scaled": 0.0029629910071619554,
+    "true_energy_relative_defect_on_learned_path": 1.9256981769581666e-07,
+    "learned_energy_relative_drift": 1.5027679624465266e-11,
+    "reference_energy_relative_drift": 1.504742860870047e-11,
+    "habitat_gravity_rmse_g": 1.3377191603814367e-05,
+    "habitat_extension_rmse_m": 0.00060977799484713,
+    "spin_rmse_rpm": 4.982843852437196e-05,
+    "spin_angular_momentum_relative_drift": 3.8968828164342995e-14
+  }
+}

@@ -1,0 +1,17 @@
+metric,value
+distance_ly,11.9
+half_trip_rapidity,3.0321393448172684
+peak_beta,0.995361912831015
+peak_gamma,10.394885444382997
+crew_trip_years,3.840649086841785
+earth_trip_years,13.105578576505751
+effective_propulsion_chi_epsilon,0.40155
+required_mass_ratio,3620692.243074207
+required_initial_mass_kg,362069224307.4207
+required_fuel_mass_kg,362069124307.4207
+fuel_volume_m3,71301521.13182764
+beetle_peak_beta_corrected,0.6199858140082788
+beetle_earth_trip_years,19.194417184776047
+beetle_crew_trip_years,15.060311342576618
+navigation_required_decel_m_s2,15.678930506005035
+navigation_earth_stop_days,8.770705158240443

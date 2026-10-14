@@ -1,0 +1,6 @@
+{
+  "beta_rmse": 0.14934378498221057,
+  "learned_hamiltonian_max_abs_drift": 3.871390035214972e-07,
+  "exact_hamiltonian_max_abs_defect_on_learned_path": 17.767673616296246,
+  "half_trip_beta": 0.9953505079606971
+}

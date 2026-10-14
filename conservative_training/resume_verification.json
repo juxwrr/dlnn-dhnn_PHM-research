@@ -1,0 +1,7 @@
+{
+  "resumed_step": 6,
+  "uninterrupted_step": 6,
+  "maximum_optimizer_state_difference": 0.0,
+  "bitwise_equal": true,
+  "safe_committed_checkpoint_verified": true
+}

@@ -1,0 +1,11 @@
+subsystem,assumption,initial_setting,limitation
+Translation,1-D axial path,Baseline,No lateral navigation/orbits
+Time,tau integrates all states,Baseline,External fields evaluated in stellar frame
+Propulsion,T is proper force; chi and epsilon separate,Baseline,No thermal/power hardware mass
+Mass,Rest mass excludes modeled internal energy corrections,Baseline,Error is negligible vs mc^2
+Drag,Continuum effective law,Baseline,Individual grains handled only as impacts
+Impacts,Discrete state jumps,Enabled in internal tests,No stochastic impact population
+Electromagnetism,"Interfaces retained, terms zero",Initially zero,Requires charge/field model
+Centrifuge,Linear elastic tethers,Enabled,No cable creep/plastic failure
+Attitude,"Rigid body, PD control",Enabled,No actuator saturation
+Stars,Fixed point masses/luminosities,Enabled,No ephemerides

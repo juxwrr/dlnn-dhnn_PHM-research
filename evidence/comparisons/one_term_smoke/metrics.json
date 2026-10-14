@@ -1,0 +1,73 @@
+{
+  "checkpoint": "/Users/junxiwu/.codex/.chatgpt-projects/g-p-6abf591a548881919fb35a6286b795bc/conservative_training/runs/incomplete_smoke_seed0/best.pkl",
+  "checkpoint_step": 1000,
+  "completed_full_budget": false,
+  "scientific_result": false,
+  "domain": "complete 1D fixed-mass thrust-and-drag total field; not a dissipative nine-coordinate ship",
+  "initial": [
+    0.0,
+    0.0
+  ],
+  "thrust": 1.0,
+  "drag_strength": 0.02,
+  "horizon": 10.346673059580333,
+  "energy_definition": "H/(mc\u00b2) = gamma - 1 - q; dH/ds = drag_force(beta)*beta",
+  "comparison_policy": "Common initial state, horizon and sample grid; failed tails stay NaN and count as failures",
+  "rollouts": {
+    "Conservative reference": {
+      "failed": false,
+      "reason": null,
+      "last_accepted_time": 10.346673059580333,
+      "completed_samples": 501,
+      "requested_samples": 501,
+      "rhs_calls": 359,
+      "method": "DOP853",
+      "rtol": 1e-09,
+      "atol": 1e-11,
+      "max_rhs_calls": 10000
+    },
+    "Full 1D dissipative reference": {
+      "failed": false,
+      "reason": null,
+      "last_accepted_time": 10.346673059580333,
+      "completed_samples": 501,
+      "requested_samples": 501,
+      "rhs_calls": 374,
+      "method": "DOP853",
+      "rtol": 1e-09,
+      "atol": 1e-11,
+      "max_rhs_calls": 10000
+    },
+    "Conservative LNN": {
+      "failed": false,
+      "reason": null,
+      "last_accepted_time": 10.346673059580333,
+      "completed_samples": 501,
+      "requested_samples": 501,
+      "rhs_calls": 107,
+      "method": "DOP853",
+      "rtol": 1e-09,
+      "atol": 1e-11,
+      "max_rhs_calls": 10000
+    },
+    "LNN + known drag force": {
+      "failed": false,
+      "reason": null,
+      "last_accepted_time": 10.346673059580333,
+      "completed_samples": 501,
+      "requested_samples": 501,
+      "rhs_calls": 107,
+      "method": "DOP853",
+      "rtol": 1e-09,
+      "atol": 1e-11,
+      "max_rhs_calls": 10000
+    }
+  },
+  "errors": {
+    "Conservative reference": 0.005789741002618505,
+    "Full 1D dissipative reference": 0.0,
+    "Conservative LNN": 0.937046683419379,
+    "LNN + known drag force": 0.9370467671462578
+  },
+  "physical_dissipation_distinct_from_learning_error": true
+}

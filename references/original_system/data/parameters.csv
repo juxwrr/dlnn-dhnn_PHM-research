@@ -1,0 +1,21 @@
+symbol,value,unit,uncertainty,allowed_range,source
+c,299792458.0,m/s,exact,exact,SI defined constant
+G,6.6743e-11,m^3 kg^-1 s^-2,2.2e-5 relative,6.67415e-11 to 6.67445e-11,CODATA
+D,1.1258269262371152e+17,m,source estimate,10 to 13 ly,source workbook: Hail Mary
+m_dry,100000.0,kg,design assumption,8e4 to 1.5e5,source workbook
+alpha,15.0,m/s^2,design assumption,5 to 25,source workbook
+epsilon,0.8031,1,model assumption,0.2 to 1.0,source workbook propellant ratio
+chi,0.5,1,design assumption,0.3 to 1.0,source workbook stacking efficiency
+rho_astrophage,5078.0,kg/m^3,fictional estimate,4500 to 5500,source workbook
+A,12.566370614359172,m^2,geometry estimate,8 to 20,4 m diameter source workbook
+rho_g,1.67e-21,kg/m^3,order of magnitude,1e-23 to 1e-19,nominal ISM assumption
+rho_d,1e-23,kg/m^3,order of magnitude,1e-25 to 1e-20,nominal ISM assumption
+C_g,1.0,1,model assumption,0.5 to 2,momentum-transfer coefficient
+C_d,1.0,1,model assumption,0.5 to 2,momentum-transfer coefficient
+M_s,1.989e+30,kg,few percent,1.8e30 to 2.1e30,source workbook
+M_T,1.56e+30,kg,order 10 percent,1.3e30 to 1.8e30,source workbook Tau Ceti
+L_s,3.86e+26,W,few percent,3.7e26 to 4.0e26,source workbook
+L_T,2e+26,W,order 20 percent,1.5e26 to 2.5e26,source workbook
+C_R,1.5,1,model assumption,1 to 2,radiation pressure model
+E_cable,270000000000.0,Pa,material/design,2e11 to 3e11,Zylon engineering assumption
+d_cable,0.01,m,design assumption,0.008 to 0.015,source workbook

@@ -1,0 +1,13 @@
+{
+  "test_total_derivative_mse": 0.0001840539656956696,
+  "test_conservative_component_mse": 0.4057152127929525,
+  "test_dissipative_component_mse": 0.41048502940390813,
+  "component_error_cancellation_correlation": 0.9996658640126047,
+  "trajectory_q_rmse": 0.06769017010153944,
+  "trajectory_beta_rmse": 0.00031267818460313946,
+  "analytic_energy_balance_rmse": 2.28577660579726e-05,
+  "analytic_max_energy_increase": -9.201211512545673e-10,
+  "learned_final_true_energy": -3.985351511835832,
+  "drag": 0.02,
+  "decomposition_note": "The derivative-only objective identifies the total field; harmonic terms can move between H and D without changing that field."
+}

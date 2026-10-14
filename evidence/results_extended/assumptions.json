@@ -1,0 +1,53 @@
+{
+  "status": "assumed engineering scenario",
+  "habitat_mass_kg": 20000.0,
+  "counterweight_mass_kg": 30000.0,
+  "hub_mass_kg": 50000.0,
+  "radii_m": [
+    30.0,
+    20.0
+  ],
+  "cable_count_per_arm": 4,
+  "cable_diameter_m": 0.01,
+  "young_modulus_pa": 120000000000.0,
+  "stiffness_N_per_m": [
+    1256637.0614359172,
+    1884955.5921538759
+  ],
+  "equilibrium_extensions_m": [
+    0.1560776822672136,
+    0.10405178817814238
+  ],
+  "spin_rad_per_s": 0.5702600017751992,
+  "spin_rpm": 5.4455818878069575,
+  "habitat_gravity_m_per_s2": 9.806650000000001,
+  "counterweight_gravity_g": 0.6666666666666669,
+  "inertia_kg_m2": [
+    100000.0,
+    9254166.666666666,
+    9254166.666666666
+  ],
+  "magnetic_field_T": 5e-10,
+  "magnetic_moment_A_m2": 100.0,
+  "magnetic_field_angle_degrees": 30,
+  "spacecraft_charge_C": 2.2253001124037054e-08,
+  "electric_field_V_per_m": 1e-05,
+  "attitude_time_scale_days": 47.72348823331144,
+  "centrifuge_time_scale_s": 0.126156626101008,
+  "sources": [
+    "https://ntrs.nasa.gov/citations/20205004959",
+    "https://assets.science.nasa.gov/content/dam/science/hpd/heat/sten-guides/sten-guides-pdfs/MagnetismIntroduction_FINAL.pdf",
+    "https://cdaweb.gsfc.nasa.gov/pub/documents/archived_websites/pwg.gsfc.nasa.gov/Education/FAQs6.html"
+  ],
+  "approximations": [
+    "fixed mass",
+    "one-dimensional travel",
+    "planar hub attitude",
+    "frozen stellar distances for the attitude benchmark",
+    "separate local comoving centrifuge clock",
+    "no hub-centifuge angular momentum exchange",
+    "no fully relativistic field transformations",
+    "linear elastic tethers",
+    "no damping or impacts"
+  ]
+}

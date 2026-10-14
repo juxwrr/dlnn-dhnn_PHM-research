@@ -1,0 +1,8 @@
+{
+  "sha": "3b994720c87ebcb4b32a9bae5b09994567a79c2a",
+  "files": [
+    "notebooks/SpecialRelativity.ipynb",
+    "examples/hyperopt/HyperparameterSearch.py",
+    "lnn/core.py"
+  ]
+}

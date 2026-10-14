@@ -1,0 +1,150 @@
+{
+  "dtype": "float64",
+  "full_model_status": "effective mathematical benchmark only",
+  "time_convention": "single SI coordinate time for the benchmark; no high-speed physical claim",
+  "full_physical_training_authorized_by_gate": false,
+  "incomplete_explicit_autodiff_max_error": 7.105427357601002e-15,
+  "incomplete_solver_exact_max_error": 2.5085933330615262e-11,
+  "incomplete_work_max_residual": 4.417959331703969e-10,
+  "corrected_equilibrium": {
+    "extension_m": [
+      0.15607768226721355,
+      0.10405178817814238
+    ],
+    "spin_rad_s": 0.5702600017751992,
+    "spin_rpm": 5.4455818878069575
+  },
+  "vector_translation_Lorentz_stellar_limit_error_m_s2": 7.105427357601002e-15,
+  "anchored_hub_pdf_limit_max_error": 1.4432899320127035e-15,
+  "COM_kinetic_identity_abs_J": 0.0,
+  "reduced_axial_roll_prototype_max_error": 7.534934048231134e-16,
+  "internal_directional_fd_relative_errors": [
+    1.2473956098025287e-10,
+    4.7798800693896985e-11,
+    8.415698175239212e-09
+  ],
+  "hub_rotor_hessian_cross_SI": 30312969.87263116,
+  "tidal_position_attitude_cross_max": 1.0803840099504103e-17,
+  "tidal_mixed_derivative_reciprocity": 3.0814879110195774e-33,
+  "tidal_potential_printed_torque_max_error_Nm": 3.970466940254533e-23,
+  "isolated_energy_derivative_W": -1.1842503914950349e-09,
+  "isolated_total_angular_momentum_derivative": [
+    1.4551915228366852e-11,
+    -1.7462298274040222e-10,
+    -2.9103830456733704e-11
+  ],
+  "isolated_hub_momentum_exchange_Nm": [
+    3149.932403456968,
+    15635.972376523996,
+    -26891.478538135583
+  ],
+  "isolated_rotor_momentum_exchange_Nm": [
+    -3149.9324034569536,
+    -15635.97237652417,
+    26891.478538135554
+  ],
+  "joint_exact_hessian": {
+    "min_singular": 0.0016621996470847728,
+    "max_singular": 2.2877581574808374,
+    "condition": 1376.3437872780157,
+    "eigenvalues": [
+      0.0016621996470849608,
+      0.5,
+      0.6548475080774017,
+      1.0000000000000004,
+      1.0020384470023929,
+      1.0020384470023933,
+      1.0061278152760131,
+      1.0410114575867806,
+      2.2877581574808374
+    ],
+    "retained_rank": 9
+  },
+  "source_pinv_internal_max_disagreement": 3.631032083423691e-23,
+  "balanced_joint_pinv_scaled_max_disagreement": 5.712188052123438e-11,
+  "unbalanced_exact_hessian": {
+    "min_singular": 3.355673512429749e-18,
+    "max_singular": 1.0061278152760131,
+    "condition": 2.998288753507204e+17,
+    "eigenvalues": [
+      3.3556735124315392e-18,
+      6.990986484229438e-18,
+      3.491927776889148e-16,
+      6.449645220961223e-14,
+      1.7757336057333004e-13,
+      5.078959783696002e-13,
+      1.0020384470023929,
+      1.0020384470023933,
+      1.0061278152760131
+    ],
+    "retained_rank": 6
+  },
+  "coordinate_scaling_correction": "nominal mass-metric coordinate scales applied to the whole action, preserving coupling strengths",
+  "coordinate_scales_SI": [
+    37820805.031808145,
+    37820805.031808145,
+    37820805.031808145,
+    2179954.961019433,
+    3931534.674632476,
+    1908920.701377023,
+    84569891.0148891,
+    69051026.86308739,
+    2183585.196608279
+  ],
+  "full_training_gates": {
+    "proper_time_and_field_action": "unresolved: PDF does not define a covariant flexible-body action",
+    "finite_hub_vs_PDF_limit": "anchored-hub limit passes; suppressing angular velocity alone is insufficient for PDF equations",
+    "gravity_gradient_torque_sign": "passed: PDF potential and printed torque agree under virtual work",
+    "default_pinv_retains_nine_modes": true,
+    "attitude_chart": "bounded ZYX chart only, no wide-rotation claims",
+    "material_elastic_bound": "Young modulus alone does not establish cable yield/allowable stress"
+  },
+  "published_benchmark_domain": {
+    "speed_max_c": 0.99999,
+    "attitude_each_rad": [
+      -0.5235987755982988,
+      0.5235987755982988
+    ],
+    "hub_angle_rates_rad_s": [
+      -0.02,
+      0.02
+    ],
+    "extension_offsets_m": [
+      -0.03,
+      0.03
+    ],
+    "extension_rates_m_s": [
+      -0.05,
+      0.05
+    ],
+    "spin_factor": [
+      0.9,
+      1.1
+    ],
+    "route_m": [
+      0,
+      1.1258269262371152e+17
+    ],
+    "transverse_position_m": [
+      -149597870700.0,
+      149597870700.0
+    ],
+    "star_exclusion_m": 149597870700.0,
+    "position_mixture": [
+      0.5,
+      0.25,
+      0.25
+    ],
+    "force_mixture": {
+      "synthetic_vector_normal_sigma10": 0.5,
+      "zero_external_force": 0.25,
+      "mission_g1_axial": 0.25
+    },
+    "near_star_distances_m": [
+      149597870700.0,
+      5.629134631185576e+16
+    ],
+    "interpretation": "provisional effective benchmark, not certified hardware envelope"
+  },
+  "incomplete_reference_gate_passed": true
+}

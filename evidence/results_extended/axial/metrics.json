@@ -1,0 +1,11 @@
+{
+  "beta_rmse": 2.2416750940320154,
+  "learned_energy_balance_max_abs_residual": 1.7873860613804027e-08,
+  "exact_energy_balance_max_abs_residual_on_learned_path": 11.866876472487785,
+  "full_model_final_beta": 0.9953619108285249,
+  "propulsion_only_reference_final_beta": 0.9953619128310149,
+  "learned_final_beta": 5.846643320919236,
+  "speed_limit_violation_count": 422,
+  "trajectory_sample_count": 500,
+  "first_speed_limit_violation_s": 1.617315628551635
+}
