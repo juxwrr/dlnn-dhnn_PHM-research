@@ -15,29 +15,22 @@ This is the existing modern JAX port, not a recreation of the original 2020 Pyth
    powershell -ExecutionPolicy Bypass -File .\Setup-Windows.ps1
    ```
 
-3. Open [Releases](https://github.com/juxwrr/hail-mary-lnn-research/releases), download `training-transfer.zip`, put it in this folder and extract it:
-
-   ```powershell
-   Expand-Archive .\training-transfer.zip -DestinationPath .
-   .\.venv\Scripts\python.exe -m conservative_training.portable check --device cpu --transfer
-   ```
-
-4. Continue the five main seeds of both models:
+3. Start the five main seeds of both models **from scratch**:
 
    ```powershell
    powershell -ExecutionPolicy Bypass -File .\Start-Training.ps1
    ```
 
-   To run only the coupled model, use `-Model coupled`. To run only seed zero, add `-Seeds 0`. To also run all matched baselines and low-speed studies, add `-Controls`.
+   No old checkpoints or release downloads are needed. New runs begin at update zero with newly initialized weights and a new optimizer. To run only the coupled model, use `-Model coupled`. To run only seed zero, add `-Seeds 0`. To also run all matched baselines and low-speed studies, add `-Controls`.
 
 The script uses native Windows **CPU** JAX. It does not pretend to use the Radeon GPU. For your RX 7900 XT, see [AMD GPU setup](AMD_GPU.md). Native Windows GPU support for JAX is not available; an AMD Linux/WSL ROCm environment must be verified separately.
 
 Outputs and logs go to `training_results/`. Running the same command again resumes its newest committed checkpoint. Ctrl+C asks the trainer to save an interrupted checkpoint; allow it to finish writing before closing the terminal. The default setup runs one experiment at a time to avoid competing for device memory.
 
-## What is transferred
+## Included research and optional archives
 
-- One-term seed zero: resume at **60,000** updates, matching best checkpoint at **56,000**.
-- Coupled mathematical seed zero: resume at **20,000** updates, matching best checkpoint at **17,000**.
+- Optional archived one-term snapshot: **60,000** updates, matching best checkpoint at **56,000**. It is not loaded by the default training command.
+- Optional archived coupled snapshot: **20,000** updates, matching best checkpoint at **17,000**. It is not loaded by the default training command.
 - Original immutable validation data, optimizer state, RNG position, fixed acceleration scales and completed source-control evidence.
 - Architecture, physics reference and gradient/resumption tests.
 - `reports/`: the final Word reports, with clearly labelled preliminary results.
@@ -45,9 +38,9 @@ Outputs and logs go to `training_results/`. Running the same command again resum
 - `evidence/`: existing results and charts.
 - `research-archive.zip` in Releases: full historical code, runs, saved checkpoints, frozen execution snapshots, report work and original reference material. It excludes the machine-specific virtual environment and transfer staging directory. Extract it into a separate folder for archival use; it is not the portable runnable code.
 
-Checkpoint weights are in release assets so the Git history remains practical to clone. `SHA256SUMS` verifies the downloaded assets. `transfer/manifest.json` also verifies each resumable state and its corresponding best checkpoint and validation split.
+Historical checkpoint weights are in release assets so the Git history remains practical to clone. `training-transfer.zip` is optional archival material; only an explicit `--resume-transfer` command loads it. Fresh training uses the completed source-control gate evidence included in `evidence/source_control/`, without loading its network weights. `SHA256SUMS` verifies the downloaded assets. `transfer/manifest.json` also verifies each resumable state and its corresponding best checkpoint and validation split.
 
-The Mac training is preserved and continues independently. These are committed snapshots, not a synchronized live transfer. Device kernels can introduce floating-point differences after resumption; changing hardware does not guarantee bit-for-bit continuation. Every invocation records devices, dtype, package versions and source hashes. Stored coordinate scales and validation data are retained.
+The Mac training is preserved and continues independently. These are committed snapshots, not a synchronized live transfer. Device kernels can introduce floating-point differences after resumption; changing hardware does not guarantee bit-for-bit continuation. Every invocation records devices, dtype, package versions and source hashes. Optional checkpoint continuation retains stored coordinate scales and validation data. Fresh runs construct them using the original recipe.
 
 ## Check before a long run
 
@@ -67,7 +60,7 @@ The portable study preserves five seeds and failed-seed reporting, validation-on
 
 ## Files and provenance
 
-`conservative_training/train.py` is the shared trainer. `physics.py` and `engine.py` are the reference and Euler–Lagrange engine. `portable.py` continues the transferred study. Original dated Mac coordinators are retained for provenance; use the portable commands on the new computer.
+`conservative_training/train.py` is the shared trainer. `physics.py` and `engine.py` are the reference and Euler–Lagrange engine. `portable.py` starts a fresh study by default and can continue checkpoints saved on the new computer. Original dated Mac coordinators are retained for provenance; use the portable commands on the new computer.
 
 The older `phm_lnn.py`, `phm_rotating_lnn.py` and `phm_dhnn.py` are separate earlier experiments. Their architectures and recipes differ from this generic training track. The D-HNN additionally needs `requirements_dhnn.txt` and PyTorch; it is not required for these two LNN runs.
 

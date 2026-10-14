@@ -9,4 +9,4 @@ if ($LASTEXITCODE -ne 0) { throw "pip setup failed." }
 if ($LASTEXITCODE -ne 0) { throw "Dependency installation failed." }
 & .\.venv\Scripts\python.exe -m conservative_training.portable check --device cpu
 if ($LASTEXITCODE -ne 0) { throw "JAX CPU check failed." }
-Write-Host "Setup complete. Download and extract training-transfer.zip from Releases, then run Start-Training.ps1."
+Write-Host "Setup complete. Run Start-Training.ps1 to train both models from scratch."

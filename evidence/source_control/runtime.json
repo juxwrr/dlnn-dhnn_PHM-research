@@ -1,0 +1,9 @@
+{
+  "status": "completed",
+  "updates": 299000,
+  "median_update_seconds": 0.10227291699266061,
+  "estimated_seconds_300000": 30681.875097798184,
+  "max_rss_bytes": 485851136,
+  "validation_selected_step": 300000,
+  "scientific_result": true
+}

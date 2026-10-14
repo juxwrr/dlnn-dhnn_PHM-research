@@ -32,10 +32,9 @@ python -m conservative_training.portable profile --model coupled --device gpu --
 
 The device check requests `rocm` explicitly and fails rather than silently falling back to CPU. It must list your Radeon device. The unit tests exercise the actual network, gradients and optimizer continuation. The audit tests the physical reference; the profile exercises third-order training differentiation, the pseudoinverse and float64. Passing import/device discovery alone is not enough.
 
-Download and extract `training-transfer.zip` into the repository and check its hashes:
+Start both models from scratch (no old checkpoints required):
 
 ```bash
-python -m conservative_training.portable check --device gpu --transfer
 python -m conservative_training.portable study --model both --device gpu --out training_results
 ```
 

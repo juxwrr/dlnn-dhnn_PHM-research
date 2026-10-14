@@ -1,4 +1,4 @@
-"""Portable continuation of the existing study, using its unchanged trainer."""
+"""Portable fresh training of both models, using the unchanged study trainer."""
 import argparse
 from datetime import datetime,timezone
 import hashlib
@@ -64,14 +64,15 @@ def run_study(args):
     devices=configure(args.device)
     if not args.fresh:verify_transfer()
     else:
-        gate=json.loads((REPO/'transfer/source_gate.json').read_text(encoding='utf-8'))
+        gate=json.loads((REPO/'evidence/source_control/source_gate.json').read_text(encoding='utf-8'))
         if not gate['passed']:raise RuntimeError('Source gate did not pass')
     root=Path(args.out).resolve();root.mkdir(parents=True,exist_ok=True)
     status_path=root/'study_status.json'
     active_child=[None]
     state={'started':datetime.now(timezone.utc).isoformat(),'devices':devices,'status':'running',
            'primary_seeds':args.seeds,'completed':[],'failures':[],'physical_full_claim':False,
-           'budget':300000,'backend_change_note':'Optimizer/RNG retained; different hardware may introduce floating-point differences'}
+           'budget':300000,'initialization':'fresh weights for new runs' if args.fresh else 'optional transferred seed-zero checkpoints',
+           'backend_change_note':'Local interrupted runs retain optimizer/RNG state; different hardware may introduce floating-point differences'}
     def save():
         state['updated']=datetime.now(timezone.utc).isoformat()
         temp=status_path.with_suffix('.tmp');temp.write_text(json.dumps(state,indent=2),encoding='utf-8');temp.replace(status_path)
@@ -132,7 +133,7 @@ def run_study(args):
 def main():
     parser=argparse.ArgumentParser(description=__doc__);sub=parser.add_subparsers(dest='command',required=True)
     check=sub.add_parser('check');check.add_argument('--device',choices=['cpu','gpu'],default='cpu');check.add_argument('--transfer',action='store_true')
-    study=sub.add_parser('study');study.add_argument('--model',choices=['one-term','coupled','both'],default='both');study.add_argument('--device',choices=['cpu','gpu'],default='cpu');study.add_argument('--out',default='training_results');study.add_argument('--seeds',nargs='+',type=int,default=list(range(5)));study.add_argument('--controls',action='store_true');study.add_argument('--fresh',action='store_true')
+    study=sub.add_parser('study');study.add_argument('--model',choices=['one-term','coupled','both'],default='both');study.add_argument('--device',choices=['cpu','gpu'],default='cpu');study.add_argument('--out',default='training_results');study.add_argument('--seeds',nargs='+',type=int,default=list(range(5)));study.add_argument('--controls',action='store_true');study.add_argument('--fresh',action='store_true',default=True,help='Start new runs from freshly initialized weights (default); interrupted local runs can resume');study.add_argument('--resume-transfer',dest='fresh',action='store_false',help='Optionally continue archived seed-zero snapshots instead')
     profile=sub.add_parser('profile');profile.add_argument('--model',choices=list(MODELS),required=True);profile.add_argument('--device',choices=['cpu','gpu'],default='cpu');profile.add_argument('--out',required=True)
     args=parser.parse_args()
     if args.command=='check':

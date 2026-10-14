@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "validation_score": 0.0006093716479589398,
+  "notebook_rollout": {
+    "name": "notebook_seed4",
+    "initial_position": 7.610933780670166,
+    "initial_beta": 0.14534597098827362,
+    "force": -0.5326825976371765,
+    "short_horizon": 0.1,
+    "long_horizon": 1.0,
+    "failed": false,
+    "beta_MAE": 0.0007285716415997187,
+    "beta_max_error": 0.0012704744107211452,
+    "position_MAE_scaled": 0.0002661091831705019,
+    "short_beta_MAE": 9.460140424237972e-05,
+    "maximum_speed_c": 0.32523319278497687,
+    "passed": true
+  },
+  "criteria": "fixed validation weighted MAE < 0.5 and notebook-seed4 beta MAE < .05c; diagnostic project gates, not paper tolerances"
+}

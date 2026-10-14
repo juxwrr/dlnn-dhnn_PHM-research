@@ -1,0 +1,37 @@
+{
+  "model": "source",
+  "seed": 0,
+  "width": 500,
+  "layers": 4,
+  "batch_size": 512,
+  "microbatch": 32,
+  "budget": 300000,
+  "optimizer": "faithful",
+  "baseline": false,
+  "dtype": "float32",
+  "validation_seed": 1000,
+  "final_test_seed": 2000,
+  "validation_count": 10000,
+  "test_count": 10000,
+  "checkpoint_selection": "minimum fixed validation gamma-weighted normalized MAE",
+  "mode": "full_budget",
+  "requested_updates": 300000,
+  "speed_domain": "0\u20130.99999c",
+  "low_speed": false,
+  "training_rng": "fold_in(PRNGKey(seed), integer_step); source preserves epoch sampler",
+  "time_convention": "source",
+  "position_feature_map": "identity",
+  "acceptance": {
+    "band_component_scaled_MAE": 0.01,
+    "speed_MAE_c": 0.001,
+    "speed_max_error_c": 0.005,
+    "work_residual": 0.001,
+    "gravity_error_g": 0.01,
+    "attitude_MAE_deg": 1.0,
+    "extension_MAE_m": 0.01
+  },
+  "acceleration_scales": [
+    1.0
+  ],
+  "resumed_from": "/Users/junxiwu/.codex/.chatgpt-projects/g-p-6abf591a548881919fb35a6286b795bc/conservative_training/runs/source_float32_smoke_seed0/final.pkl"
+}

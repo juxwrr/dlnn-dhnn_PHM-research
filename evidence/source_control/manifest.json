@@ -1,0 +1,76 @@
+{
+  "config": {
+    "model": "source",
+    "seed": 0,
+    "width": 500,
+    "layers": 4,
+    "batch_size": 512,
+    "microbatch": 32,
+    "budget": 300000,
+    "optimizer": "faithful",
+    "baseline": false,
+    "dtype": "float32",
+    "validation_seed": 1000,
+    "final_test_seed": 2000,
+    "validation_count": 10000,
+    "test_count": 10000,
+    "checkpoint_selection": "minimum fixed validation gamma-weighted normalized MAE",
+    "mode": "full_budget",
+    "requested_updates": 300000,
+    "speed_domain": "0\u20130.99999c",
+    "low_speed": false,
+    "training_rng": "fold_in(PRNGKey(seed), integer_step); source preserves epoch sampler",
+    "time_convention": "source",
+    "position_feature_map": "identity",
+    "acceptance": {
+      "band_component_scaled_MAE": 0.01,
+      "speed_MAE_c": 0.001,
+      "speed_max_error_c": 0.005,
+      "work_residual": 0.001,
+      "gravity_error_g": 0.01,
+      "attitude_MAE_deg": 1.0,
+      "extension_MAE_m": 0.01
+    },
+    "acceleration_scales": [
+      1.0
+    ],
+    "resumed_from": "/Users/junxiwu/.codex/.chatgpt-projects/g-p-6abf591a548881919fb35a6286b795bc/conservative_training/runs/source_float32_smoke_seed0/final.pkl"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.6",
+  "packages": {
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "x64_enabled": false,
+  "devices": [
+    "cpu:0"
+  ],
+  "source_sha": "3b994720c87ebcb4b32a9bae5b09994567a79c2a",
+  "source_hashes": {
+    "suite.py": "51a87fdd8199292b9afe13bee2b65fb80311bbe1415394900e35dab41260a847",
+    "audit.py": "c0c6e050a6f0a4d11eb438e5cd73122f0863f6fba0bc71426b11cfb2c00ce84f",
+    "__init__.py": "ffc79005df98889bca83024344938336767601375fcc9f0cc5c8b4eb421473f0",
+    "physics.py": "677a2723f7b069d607768c8d7b085d46718e1253a3b553c2d9daef35df1543c4",
+    "engine.py": "f63c652156a247368222623e7cf49094d95fea01d532d12d605fdf792f7d0f20",
+    "test_training.py": "478e8cd1387de268992fd0772b3c64b4b82736f118fe6f8a4a8494dbbf45c924",
+    "train.py": "25553570710491585fc335f145392c5c056100a4877cd6e258c97024cc44933a",
+    "evaluate.py": "70f3d26fd682111001f7a137cd05bc41661df30df3c73846df39978b5daddb4a",
+    "provenance/SpecialRelativity.ipynb": "fb6145ab32c4fc4cec5ea15d46640aedcce3b62527bc4bc8701a0402e26f2f00",
+    "provenance/source_commit.json": "c46d0402db10308a2ac572a47078e43c8d36edcd895197e6515d4c895278be97",
+    "provenance/core.py": "e511dc39945920dcf0b9acd64e6dfe02bc42db0743976f460f0f4f302ff9ad56",
+    "provenance/HyperparameterSearch.py": "7eedbfee3a8ae1e7bd8a67dbcdabad9f41e8ed2d7d40dbacf9cdfa833873b46e",
+    "provenance/cell_order.json": "62baaa3aa747af4bad17a964c71bbb6f47ed35fa0eac0d0e0df5527bc902404e"
+  },
+  "jax_adam_source": "@optimizer\ndef adam(step_size, b1=0.9, b2=0.999, eps=1e-8):\n  \"\"\"Construct optimizer triple for Adam.\n\n  Args:\n    step_size: positive scalar, or a callable representing a step size schedule\n      that maps the iteration index to a positive scalar.\n    b1: optional, a positive scalar value for beta_1, the exponential decay rate\n      for the first moment estimates (default 0.9).\n    b2: optional, a positive scalar value for beta_2, the exponential decay rate\n      for the second moment estimates (default 0.999).\n    eps: optional, a positive scalar value for epsilon, a small constant for\n      numerical stability (default 1e-8).\n\n  Returns:\n    An (init_fun, update_fun, get_params) triple.\n  \"\"\"\n  step_size = make_schedule(step_size)\n  def init(x0):\n    m0 = jnp.zeros_like(x0)\n    v0 = jnp.zeros_like(x0)\n    return x0, m0, v0\n  def update(i, g, state):\n    x, m, v = state\n    m = (1 - b1) * g + b1 * m  # First  moment estimate.\n    v = (1 - b2) * jnp.square(g) + b2 * v  # Second moment estimate.\n    mhat = m / (1 - jnp.asarray(b1, m.dtype) ** (i + 1))  # Bias correction.\n    vhat = v / (1 - jnp.asarray(b2, m.dtype) ** (i + 1))\n    x = x - step_size(i) * mhat / (jnp.sqrt(vhat) + eps)\n    return x, m, v\n  def get_params(state):\n    x, _, _ = state\n    return x\n  return init, update, get_params\n",
+  "deviations": [
+    "Modern jax.example_libraries imports replace removed jax.experimental imports",
+    "Modern JAX PRNG and autodiff implementation; not a historical environment reproduction",
+    "Auxiliary validation and checkpointing added; no checkpoint loaded from source notebook",
+    "Loss/gradient evaluated in chunks; same weighted batch objective and one Adam update"
+  ],
+  "physical_full_claim": false
+}

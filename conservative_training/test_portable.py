@@ -6,10 +6,11 @@ from pathlib import Path
 import pickle
 import tempfile
 import unittest
+from unittest.mock import patch
 import jax
 import numpy as np
 from .train import train
-from .portable import train_arguments
+from .portable import train_arguments,checkpoint_for,main
 from .original_dissipative_comparison import load_original,DEFAULT_SOURCE
 
 
@@ -25,6 +26,14 @@ class PortableTests(unittest.TestCase):
         self.assertEqual(arguments[arguments.index('--microbatch')+1],'16')
         self.assertIn('--mathematical-benchmark',arguments)
         self.assertIn('--physics-audit',arguments)
+
+    def test_default_study_starts_fresh_without_transfer(self):
+        with patch('sys.argv',['portable','study']),patch('conservative_training.portable.run_study') as study:
+            main()
+            self.assertTrue(study.call_args.args[0].fresh)
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertIsNone(checkpoint_for(Path(tmp),'one-term',0,'main',False))
+            self.assertNotIn('--resume',train_arguments('one-term',0,Path(tmp)))
 
     def test_optimizer_resume_matches_uninterrupted_training(self):
         def args(out,steps,resume=None):
